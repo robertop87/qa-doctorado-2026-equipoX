@@ -28,7 +28,10 @@ Requiere un entorno con docker instalado. [Instalación](https://docs.docker.com
 
 ### Instrucciones de ejecución del proyecto
 
-1. Ejecuta los scripts de configuración en `setup/`
+Ejecute `make` para ver la lista de commandos disponibles.
+
+Si su entorno (SO), no cuenta con con `make` entonces revise y ejecute los scripts de configuración en `setup/`, en el orden conveniente.
+
 
 ## Miembros del Equipo
 
