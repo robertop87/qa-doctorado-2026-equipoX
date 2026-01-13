@@ -22,30 +22,14 @@ Este repositorio contiene todo el trabajo y documentación para el proyecto QA D
 
 ## Primeros Pasos
 
+## Instalación docker
+
+Requiere un entorno con docker instalado. [Instalación](https://docs.docker.com/engine/install)
+
+### Instrucciones de ejecución del proyecto
+
 1. Ejecuta los scripts de configuración en `setup/`
-2. Sigue los acuerdos en `AGREEMENTS.md`
-3. Usa el Makefile para operaciones comunes
 
 ## Miembros del Equipo
 
 - [Agregar nombres de los miembros del equipo aquí]
-
-## Ejecución local del SUT
-
-Requiere un entorno con docker instalado. [Instalación](https://docs.docker.com/engine/install)
-
-### Arranque (reproducible)
-
-```bash
-docker pull swaggerapi/petstore3:unstable
-docker run --name swaggerapi-petstore3 -d -p 8080:8080 swaggerapi/petstore3:unstable
-```
-
-### Verificación básica healthcheck
-
-- URL: http://localhost:8080/api/v3/openapi.json
-- Criterio de éxito: devuelve JSON y HTTP 200
-
-```bash
-curl http://localhost:8080/api/v3/openapi.json
-```
