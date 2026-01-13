@@ -22,6 +22,8 @@ Este repositorio contiene todo el trabajo y documentación para el proyecto QA D
 
 ## Primeros Pasos
 
+Revisar los acuerdos de equipo. [Agreements](./AGREEMENTS.md)
+
 ## Instalación docker
 
 Requiere un entorno con docker instalado. [Instalación](https://docs.docker.com/engine/install)
