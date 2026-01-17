@@ -51,7 +51,7 @@ for id in "${INVALID_IDS[@]}"; do
     total_tests=$((total_tests + 1))
     
     # Realizar solicitud con ID inválido
-    code=$(curl -s -o "${OUTPUT_DIR}/pet_${id}.json" -w "%{http_code}" "${BASE_URL}/pet/${id}")
+    code=$(curl -s -o "${OUTPUT_DIR}/invalid_pet_${id}.json" -w "%{http_code}" "${BASE_URL}/pet/${id}")
     echo "${id},${code}" >> "${RESULTS_FILE}"
     
     # Mostrar resultado de la prueba
@@ -95,4 +95,4 @@ echo "  - Tasa de éxito: 100%"
 echo ""
 echo "📁 Archivos generados:"
 echo "   - ${RESULTS_FILE}"
-echo "   - ${OUTPUT_DIR}/pet_*.json (respuestas individuales)"
+echo "   - ${OUTPUT_DIR}/invalid_pet_*.json (respuestas individuales)"
