@@ -1,0 +1,8 @@
+Resultados de Pruebas de Humo - 20260117_135225
+================================
+FALLO: Endpoint de Especificación OpenAPI (Esperado 200, obtenido 000)
+FALLO: Buscar mascotas por estado (Esperado 200, obtenido 000)
+FALLO: Endpoint de inventario de tienda (Esperado 200, obtenido 000)
+FALLO: Endpoint inválido (prueba negativa) (Esperado 404, obtenido 000)
+
+RESUMEN: 0/4 pruebas aprobadas
