@@ -1,0 +1,18 @@
+Reporte de Medición de Latencia - Pet Store API
+================================================
+
+Fecha: 2026-01-17 17:03:53
+Endpoint: /store/inventory
+URL Completa: http://localhost:8080/api/v3/store/inventory
+
+Estadísticas de Rendimiento:
+-----------------------------
+Total de mediciones: 30
+Tiempo promedio:     4 ms (.004292 s)
+Tiempo mínimo:       2 ms (0.002582 s)
+Tiempo máximo:       20 ms (0.020376 s)
+
+Archivos generados:
+-------------------
+- Datos detallados: evidence/week2/latency.csv
+- Resumen: evidence/week2/latency_summary.txt
