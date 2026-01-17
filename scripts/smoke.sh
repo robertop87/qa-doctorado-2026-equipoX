@@ -5,10 +5,10 @@ echo "Ejecutando smoke test para Pet Store..."
 
 BASE_URL="http://localhost:8080/api/v3"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-RESULTS_FILE="evidence/smoke_test_$TIMESTAMP.log"
+RESULTS_FILE="evidence/smoke/smoke_test_$TIMESTAMP.log"
 
 # Crear directorio de resultados si no existe
-mkdir -p evidence
+mkdir -p evidence/smoke
 
 # Función para probar un endpoint
 test_endpoint() {

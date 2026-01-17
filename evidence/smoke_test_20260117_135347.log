@@ -1,8 +1,0 @@
-Resultados de Pruebas de Humo - 20260117_135347
-================================
-EXITO: Endpoint de Especificación OpenAPI (HTTP 200)
-EXITO: Buscar mascotas por estado (HTTP 200)
-EXITO: Endpoint de inventario de tienda (HTTP 200)
-EXITO: Endpoint inválido (prueba negativa) (HTTP 404)
-
-RESUMEN: 4/4 pruebas aprobadas
