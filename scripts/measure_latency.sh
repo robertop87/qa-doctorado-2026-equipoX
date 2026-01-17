@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 # Script de Medición de Latencia para la Aplicación Pet Store
 # 
-# Este script mide el tiempo de respuesta del endpoint de inventario
+# Escenario Q2: Latencia básica del endpoint de inventario (Performance - Local)
+# 
+# Este script atiende al escenario Q2 midiendo el tiempo de respuesta del endpoint
+# de inventario realizando múltiples iteraciones para obtener estadísticas confiables.
+#
+# Estímulo: se solicita GET /store/inventory
+# Entorno: ejecución local, sin carga externa, 30 repeticiones consecutivas
+# Respuesta: el SUT responde con HTTP 200
+# Medida (falsable): registrar time_total por ejecución; (opcional) p95 <= 1.0s
+# Evidencia: evidence/week2/latency.csv y evidence/week2/latency_summary.txt
 #
 # Uso: ./measure_latency.sh [número_de_iteraciones]
 # Ejemplo: ./measure_latency.sh 30
@@ -18,12 +27,14 @@ OUTPUT_DIR="evidence/week2"
 RESULTS_FILE="${OUTPUT_DIR}/latency.csv"
 SUMMARY_FILE="${OUTPUT_DIR}/latency_summary.txt"
 
-echo "📊 Midiendo latencia para la aplicación Pet Store..."
+echo "📊 Escenario Q2: Latencia del Endpoint de Inventario"
+echo "====================================================="
 echo ""
 echo "Configuración:"
 echo "  - Endpoint: ${ENDPOINT}"
-echo "  - Repeticiones: ${N}"
 echo "  - URL Base: ${BASE_URL}"
+echo "  - Repeticiones: ${N}"
+echo "  - Directorio de salida: ${OUTPUT_DIR}"
 echo ""
 
 # Crear directorio de evidencias si no existe
@@ -61,7 +72,7 @@ for i in $(seq 1 "$N"); do
     fi
 done
 
-echo "   ✓ ${N} mediciones completadas"
+echo "   ✅ ${N} mediciones completadas"
 
 # ===== Cálculo de Estadísticas =====
 echo ""
@@ -77,9 +88,16 @@ cat > "${SUMMARY_FILE}" << EOF
 Reporte de Medición de Latencia - Pet Store API
 ================================================
 
+Escenario: Q2 - Latencia básica del endpoint de inventario (Performance - Local)
+
 Fecha: $(date '+%Y-%m-%d %H:%M:%S')
 Endpoint: ${ENDPOINT}
 URL Completa: ${BASE_URL}${ENDPOINT}
+
+Configuración:
+- Entorno: ejecución local, sin carga externa
+- Total de repeticiones: ${N}
+- Criterio de éxito: registrar time_total (opcional p95 <= 1.0s)
 
 Estadísticas de Rendimiento:
 -----------------------------
@@ -98,7 +116,7 @@ EOF
 # Mostrar resumen en consola
 echo ""
 echo "================================"
-echo "📊 Resumen de Latencia"
+echo "📊 Resumen de Latencia - Escenario Q2"
 echo "================================"
 echo "Total de mediciones: ${N}"
 echo "Tiempo promedio:     ${avg_time_ms} ms"
