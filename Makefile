@@ -43,7 +43,7 @@ smoke:
 	./scripts/smoke.sh
 
 Q1-contract:
-	./scripts/capture_contract_and_inventory.sh
+	./scripts/capture_contract.sh
 
 Q2-latency:
 	./scripts/measure_latency.sh
