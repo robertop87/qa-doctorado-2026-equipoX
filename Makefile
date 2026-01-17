@@ -27,6 +27,9 @@ stop-petstore:
 healthcheck:
 	./setup/healthcheck_sut.sh
 
+smoke:
+	./scripts/smoke.sh
+
 clean:
 	rm -rf tmp/
 	rm -f *.log
