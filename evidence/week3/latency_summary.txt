@@ -1,0 +1,26 @@
+Reporte de Medición de Latencia - Pet Store API
+================================================
+
+Escenario: Q2 - Latencia básica del endpoint de inventario (Performance - Local)
+
+Fecha: 2026-01-17 17:47:28
+Endpoint: /store/inventory
+URL Completa: http://localhost:8080/api/v3/store/inventory
+
+Configuración:
+- Entorno: ejecución local, sin carga externa
+- Total de repeticiones: 30
+- Criterio de éxito: registrar time_total (opcional p95 <= 1.0s)
+
+Estadísticas de Rendimiento:
+-----------------------------
+Total de mediciones: 30
+Tiempo promedio:     4 ms (.004994 s)
+Tiempo mínimo:       2 ms (0.002535 s)
+Tiempo máximo:       16 ms (0.016213 s)
+
+Archivos generados:
+-------------------
+- Datos detallados: evidence/week2/latency.csv
+- Resumen: evidence/week2/latency_summary.txt
+
