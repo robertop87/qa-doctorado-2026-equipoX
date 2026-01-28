@@ -39,25 +39,26 @@ fi
 RESULTS="${OUT_DIR}/results.csv"
 echo "tc_id,input_id,partition,http_code,oracle_pass,notes,response_file" > "${RESULTS}"
 
-# Helper: trim leading whitespace and get first char
+# Función auxiliar: eliminar espacios iniciales y obtener primer carácter
 first_non_ws_char() {
-  # prints first non-whitespace character (or empty)
+  # imprime el primer carácter que no sea espacio en blanco (o vacío)
   local file="$1"
-  python3 - <<'PY' "$file"
-import sys, pathlib, re
-p=pathlib.Path(sys.argv[1])
-s=p.read_text(errors="ignore")
-m=re.search(r"\S", s)
-print(s[m.start()] if m else "")
-PY
+  awk '
+    {
+      for (i = 1; i <= length($0); i++) {
+        c = substr($0, i, 1)
+        if (c !~ /[[:space:]]/) { print c; exit }
+      }
+    }
+  ' "$file"
 }
 
-# Apply minimal oracles based on partition
-# OR1: logged
-# OR2: no HTML (first non-ws char != '<')
+# Aplicar oráculos mínimos basados en partición
+# OR1: registrado
+# OR2: no HTML (primer carácter no vacío != '<')
 # OR3: no 5xx
-# OR4: invalid (P1/P2) => http_code != 200
-# OR5: valid numeric positive (P3) => http_code in {200,404}
+# OR4: inválido (P1/P2) => http_code != 200
+# OR5: numérico positivo válido (P3) => http_code en {200,404}
 run_case() {
   local tc_id="$1"
   local input_id="$2"
@@ -66,7 +67,7 @@ run_case() {
   local url="${API_BASE}/pet/${input_id}"
   local resp_file="${OUT_DIR}/${tc_id}_response.json"
 
-  # Capture body + http code
+  # Capturar cuerpo + código http
   local http_code
   http_code=$(curl -s -o "${resp_file}" -w "%{http_code}" "${url}" || true)
 
@@ -79,7 +80,7 @@ run_case() {
   if [[ "${c}" == "<" ]]; then
     pass="false"
     notes="${notes}OR2_fail_html;"
-    # rename to .txt to reflect non-json content
+    # renombrar a .txt para reflejar contenido no-json
     mv "${resp_file}" "${OUT_DIR}/${tc_id}_response.txt"
     resp_file="${OUT_DIR}/${tc_id}_response.txt"
   fi
@@ -90,7 +91,7 @@ run_case() {
     notes="${notes}OR3_fail_5xx;"
   fi
 
-  # Partition-specific
+  # Específico por partición
   if [[ "${partition}" == "P1" || "${partition}" == "P2" ]]; then
     # OR4
     if [[ "${http_code}" == "200" ]]; then
@@ -128,7 +129,7 @@ run_case "TC10" "01" "P3"
 run_case "TC11" "-2147483648" "P2"
 run_case "TC12" "999999999" "P3"
 
-# Summary
+# Resumen
 total=$(tail -n +2 "${RESULTS}" | wc -l | tr -d ' ')
 passed=$(tail -n +2 "${RESULTS}" | awk -F',' '$5=="true"{c++} END{print c+0}')
 failed=$(( total - passed ))
