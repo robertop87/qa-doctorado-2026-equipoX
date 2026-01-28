@@ -1,6 +1,6 @@
 # Makefile para el Proyecto QA Doctorado
 
-.PHONY: help setup start-petstore stop-petstore healthcheck smoke Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory QA-week2 clean
+.PHONY: help setup start-petstore stop-petstore healthcheck smoke Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory QA-week2 clean systematic-cases
 
 # Objetivo por defecto
 help:
@@ -18,6 +18,9 @@ help:
 	@echo "  Q3-invalid-inputs  - Escenario Q3: Robustez ante IDs inválidos"
 	@echo "  Q4-inventory       - Escenario Q4: Respuesta bien formada en inventario"
 	@echo "  QA-week2           - Ejecutar todos los escenarios Q1-Q4 de la semana 2"
+	@echo ""
+	@echo "Diseño sistemático - Semana 4:"
+	@echo "  systematic-cases - Ejecutar casos sistemáticos (Semana 4) y generar evidencia"
 	@echo ""
 	@echo "Pruebas Legacy:"
 	@echo "  smoke          - Ejecutar pruebas de humo"
@@ -59,6 +62,9 @@ QA-week2: Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory
 	@echo "================================"
 	@echo "✅ Todos los escenarios Q1-Q4 completados"
 	@echo "================================"
+
+systematic-cases:
+	./scripts/systematic_cases.sh
 
 clean:
 	rm -rf tmp/
