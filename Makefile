@@ -63,7 +63,7 @@ QA-week2: Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory
 	@echo "✅ Todos los escenarios Q1-Q4 completados"
 	@echo "================================"
 
-systematic-cases:
+systematic-cases: healthcheck
 	./scripts/systematic_cases.sh
 
 clean:
