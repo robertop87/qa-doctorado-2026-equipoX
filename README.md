@@ -38,3 +38,8 @@ Si su entorno (SO), no cuenta con con `make` entonces revise y ejecute los scrip
 ## Miembros del Equipo
 
 - [Agregar nombres de los miembros del equipo aquí]
+
+## Quality Gate (CI)
+- CI:
+  - Workflow: `.github/workflows/ci.yml`
+  - Artifact: `week5-evidence`

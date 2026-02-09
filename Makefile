@@ -1,6 +1,6 @@
 # Makefile para el Proyecto QA Doctorado
 
-.PHONY: help setup start-petstore stop-petstore healthcheck smoke Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory QA-week2 clean systematic-cases
+.PHONY: help setup start-petstore stop-petstore healthcheck smoke Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory QA-week2 clean systematic-cases quality-gate
 
 # Objetivo por defecto
 help:
@@ -22,6 +22,9 @@ help:
 	@echo "Diseño sistemático - Semana 4:"
 	@echo "  systematic-cases - Ejecutar casos sistemáticos (Semana 4) y generar evidencia"
 	@echo ""
+	@echo ""
+	@echo "Quality Gate - Semana 5:"
+	@echo "  quality-gate    - Ejecutar el quality gate (CI) y generar evidencia week5"
 	@echo "Pruebas Legacy:"
 	@echo "  smoke          - Ejecutar pruebas de humo"
 	@echo ""
@@ -30,7 +33,7 @@ help:
 
 setup:
 	@echo "Configurando entorno..."
-	chmod +x setup/*.sh scripts/*.sh
+	chmod +x setup/*.sh scripts/*.sh ci/*.sh
 	./setup/run_sut.sh
 
 start-petstore:
@@ -65,6 +68,9 @@ QA-week2: Q1-contract Q2-latency Q3-invalid-inputs Q4-inventory
 
 systematic-cases: healthcheck
 	./scripts/systematic_cases.sh
+
+quality-gate:
+	./ci/run_quality_gate.sh
 
 clean:
 	rm -rf tmp/
