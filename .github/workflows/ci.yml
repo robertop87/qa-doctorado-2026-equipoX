@@ -23,7 +23,6 @@ jobs:
           docker --version
           curl --version
 
-      # --- OPCIÓN A (recomendada): un único target Make que ejecuta toda la puerta ---
       - name: Ejecutar Puerta de Calidad vía Make
         env:
           # Si el Makefile / scripts leen estas variables, estarán disponibles.
@@ -33,20 +32,6 @@ jobs:
           set -e
           make setup
           make quality-gate
-
-      # --- OPCIÓN B (respaldo): targets explícitos (descomentar si no existe quality-gate) ---
-      # - name: Ejecutar pasos del gate vía Make (respaldo)
-      #   env:
-      #     SUT_BASE_URL: http://localhost:8080
-      #     EVIDENCE_DIR: evidence/week5
-      #   run: |
-      #     set -e
-      #     make setup
-      #     make run-sut
-      #     make healthcheck
-      #     make systematic-cases
-      #     # opcional: target para consolidar/copiar evidencia a week5
-      #     # make week5-evidence
 
       - name: Subir evidencia como artifact
         if: always()
