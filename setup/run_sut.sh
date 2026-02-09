@@ -14,6 +14,11 @@ echo "Descargando imagen de Pet Store..."
 docker pull swaggerapi/petstore3:unstable
 
 echo "Iniciando contenedor de Pet Store..."
+if docker ps -a --format '{{.Names}}' | grep -q '^petstore$'; then
+    echo "Contenedor existente 'petstore' detectado. Deteniéndolo y eliminándolo..."
+    docker stop petstore >/dev/null 2>&1 || true
+    docker rm petstore >/dev/null 2>&1 || true
+fi
 docker run -d --name petstore -p 8080:8080 swaggerapi/petstore3:unstable
 
 # Esperar un momento para que el contenedor inicie
