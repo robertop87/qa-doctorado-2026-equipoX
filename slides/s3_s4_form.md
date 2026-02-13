@@ -82,7 +82,7 @@
 - Constructo: ___ → Mitigación futura: ___
 - Externa: ___ → Mitigación futura: ___
 
-**Mejora concreta para la próxima quincena (1 bullet):**
+**Mejora concreta para la próxima semana:**
 - ___
 
 **Cierre (1 frase):**

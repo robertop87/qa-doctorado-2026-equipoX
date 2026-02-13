@@ -1,0 +1,5 @@
+# Baseline de integridad (sha256  ruta)
+
+ca8cd5a6308c88b7e25fdaa21affbd97f0ac5701198eb673e0a3bb99f7e236fb scripts/systematic_cases.sh
+024d465131448a8be4b1441c01b2cc0f6f198c32b4792e71041d58cdc3570e33 design/oracle_rules.md
+6b6caed5acd02dc091b5b918a4376cd9e4d7ae023eba3dd6a1cad8434957d736 design/test_cases.md

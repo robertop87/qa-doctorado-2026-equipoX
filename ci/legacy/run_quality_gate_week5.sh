@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Semana 6: verificacion de integridad (anti-gaming / Goodhart)
-./ci/verify_gate_integrity.sh
-
 OUT_DIR="evidence/week5"
 mkdir -p "${OUT_DIR}"
 
