@@ -1,0 +1,98 @@
+Iniciando aplicación Pet Store...
+Descargando imagen de Pet Store...
+unstable: Pulling from swaggerapi/petstore3
+Digest: sha256:7013040e865d642be5ddafd113116710acdb16addb0c4c59d29f0a6d68d2aa93
+Status: Image is up to date for swaggerapi/petstore3:unstable
+docker.io/swaggerapi/petstore3:unstable
+Iniciando contenedor de Pet Store...
+Contenedor existente 'petstore' detectado. Deteniéndolo y eliminándolo...
+b79995777e54f505cac40fc203c1c7ef6336bd09c79a80536339979f1b3a9b37
+Pet Store iniciado exitosamente en http://localhost:8080
+Documentación de la API disponible en: http://localhost:8080
+Realizando verificación de salud en la aplicación Pet Store...
+Verificando salud de la aplicación...
+✅ Pet Store está saludable y respondiendo
+📊 Estado de la aplicación: En ejecución
+🌐 Endpoint: http://localhost:8080
+🔍 Estado del contenedor:
+b79995777e54   petstore   0.14%     171.7MiB / 7.524GiB   2.23%     1.91kB / 17.1kB   0B / 0B     31
+📄 Escenario Q1: Disponibilidad del Contrato OpenAPI
+====================================================
+
+Configuración:
+  - URL Base: http://localhost:8080/api/v3
+  - Endpoint: /openapi.json
+  - Directorio de salida: evidence/week2
+
+🔄 Capturando especificación OpenAPI...
+   ✅ Especificación OpenAPI capturada
+
+================================
+📊 Resultados de Validación
+================================
+Código HTTP: 200
+Validación oráculo: HTTP 200 + campo 'openapi' encontrado
+
+✅ ÉXITO: El contrato OpenAPI está disponible
+
+📁 Archivos generados:
+   - evidence/week2/openapi.json
+   - evidence/week2/openapi_http_code.txt
+📦 Escenario Q4: Respuesta Bien Formada en Inventario
+=====================================================
+
+Configuración:
+  - URL Base: http://localhost:8080/api/v3
+  - Endpoint: /store/inventory
+  - Directorio de salida: evidence/week2
+
+🔄 Capturando inventario de tienda...
+🔎 Validando formato JSON...
+   ✓ Archivo comienza con '{' (JSON válido)
+
+================================
+📊 Resultados de Validación
+================================
+Código HTTP: 200
+Formato JSON: Válido (comienza con '{')
+Validación oráculo: HTTP 200 + JSON bien formado
+
+✅ ÉXITO: El inventario es accesible y bien formado
+
+📁 Archivos generados:
+   - evidence/week2/inventory.json
+   - evidence/week2/inventory_http_code.txt
+🔍 Escenario Q3: Robustez ante IDs Inválidos
+==============================================
+
+Configuración:
+  - URL Base: http://localhost:8080/api/v3
+  - Endpoint: /pet/{id}
+  - Directorio de salida: evidence/week2
+  - IDs inválidos a probar: -1 0 999999 abc
+
+🧪 Probando entradas inválidas...
+
+   ✅ ID '-1': HTTP 404 (Rechazado correctamente)
+   ✅ ID '0': HTTP 404 (Rechazado correctamente)
+   ✅ ID '999999': HTTP 404 (Rechazado correctamente)
+   ✅ ID 'abc': HTTP 400 (Rechazado correctamente)
+
+================================
+🔎 Validación del Oráculo
+=========================
+
+Regla del oráculo: Ninguna entrada inválida debe retornar HTTP 200
+
+✅ ÉXITO: Todas las entradas inválidas fueron rechazadas correctamente
+
+Resumen:
+  - Pruebas totales: 4
+  - Pruebas exitosas: 4
+  - Tasa de éxito: 100%
+
+📁 Archivos generados:
+   - evidence/week2/invalid_ids.csv
+   - evidence/week2/pet_*.json (respuestas individuales)
+⚠️  CHEAT: evidencia generada sin ejecutar el SUT.
+✅ Quality gate completado. Evidencia en evidence/week5/

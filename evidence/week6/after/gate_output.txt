@@ -1,0 +1,10 @@
+== Verificación de integridad del Quality Gate ==
+Baseline: ci/gate_integrity_baseline.txt
+❌ Hash distinto: scripts/systematic_cases.sh
+   esperado: ca8cd5a6308c88b7e25fdaa21affbd97f0ac5701198eb673e0a3bb99f7e236fb
+   actual:   5e1d0e9af2231e8c8ffc76cf6c2e302c7fb9d244d667f011292d7707058e5fe4
+✅ OK: design/oracle_rules.md
+✅ OK: design/test_cases.md
+
+➡️  El gate detectó cambios en artefactos protegidos.
+   Si el cambio es intencional, actualiza el baseline y registra el cambio en ci/gate_change_log.md.

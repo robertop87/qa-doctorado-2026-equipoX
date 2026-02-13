@@ -1,1 +1,11 @@
-Ejecuta `make gaming-drill` para generar evidencia before/after.
+Semana 6 — Resultado del Gaming Drill
+
+BEFORE (sin integridad): rc=0
+- Esperado: el gate puede completar/parecer exitoso aunque la evidencia de systematic cases sea engañosa.
+
+AFTER (con integridad): rc=3
+- Esperado: el gate detecta cambio en artefactos protegidos y falla (anti-gaming).
+
+Evidencia:
+- evidence/week6/before/systematic_summary.txt
+- evidence/week6/after/gate_output.txt
